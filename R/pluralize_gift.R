@@ -12,9 +12,12 @@
 #' @export
 pluralize_gift <- function(gift){
 
-gift <- gift %>%
-  str_replace()
+  gift <- gift %>%
+    str_replace("y$","ie")
 
-return(gift)
+  gift <- gift %>%
+    map_chr(function(x) paste(x, "s", sep = ""))
+
+  return(gift)
 
 }
