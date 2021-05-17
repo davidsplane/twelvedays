@@ -18,15 +18,16 @@ sing_day <- function(dataset, line, phrase_col){
   phrases <- dataset %>% pull({{phrase_col}})
 
   day_words <- dataset$Day.in.Words
-
-  first_line <- str_glue("On the {day_words} day of Christmas, my true love sent to me,")
-
+  
+  first_line <- str_glue("On the {day_words[line]} day of Christmas, my true love sent to me,")
+  
+  lines1 <- str_c(phrases[line:1], sep = "\n")
+  
   linesup <- sapply(
     1:line,
-    function(x) str_glue("{first_line[x]}
-                         {phrases[x:1]}")
-  )
-
+    function(x) str_glue("{first_line} {lines1[x]}")
+    )
+  
   return (linesup)
 
 
