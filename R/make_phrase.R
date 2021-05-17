@@ -22,7 +22,15 @@ make_phrase <- function(num, num_word, item, verb, adjective, location){
 
   verb <- str_replace_na(verb, "")
 
-  #????
+  adjective <- str_replace_na(adjective, "")
+
+  location <- str_replace_na(location, "")
+
+  plural <- pluralize_gift(item)
+
+  gash <- str_glue("{num_word} {adjective} {plural} {verb} {location}")
+
+  return (gash)
 
 
 }
